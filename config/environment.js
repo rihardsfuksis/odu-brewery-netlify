@@ -57,7 +57,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.blog.host = 'https://www.odubrewery.com';
   }
 
   return ENV;
