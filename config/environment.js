@@ -26,7 +26,8 @@ module.exports = function(environment) {
     blog: {
       title: 'ODU Brewery',
       description: 'Latvian Craft Beer Brewery',
-      coverImage: '/images/blog-cover.jpg',
+      logo: '/images/logo-white.png',
+      coverImage: '/images/page-cover.jpg',
 
       navigation: [{
         label: 'Home',

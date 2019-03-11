@@ -8,4 +8,4 @@ twitter:
 facebook: https://www.facebook.com/odubrewery
 location: 
 ---
-You can delete this user to remove all the welcome posts
+Latvian craft beer brewery
