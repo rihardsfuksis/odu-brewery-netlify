@@ -1,6 +1,6 @@
 ---
 title: 4AM Stout
-image: /images/4am-stout.png
+image: /images/4am-stout.jpg
 imageMeta:
   attribution:
   attributionLink:
