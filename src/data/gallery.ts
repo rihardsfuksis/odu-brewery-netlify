@@ -8,5 +8,4 @@ export const galleryImages: string[] = [
   "/gallery/ttt-plp.webp",
   "/gallery/the-push.webp",
   "/gallery/raspberries.webp",
-  // Add more: "/beers/pour.webp", "/beers/glass.webp", etc.
 ];
