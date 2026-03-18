@@ -8,13 +8,39 @@ export function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
-    // TODO: Wire up to API route or Formspree/Resend
-    await new Promise((r) => setTimeout(r, 1000));
-    setStatus("success");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const params = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        if (typeof value === "string") params.append(key, value);
+      }
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-6"
+    >
+      <input type="hidden" name="form-name" value="contact" />
       <div>
         <label htmlFor="name" className="mb-2 block text-sm font-medium text-cream/90">
           Name

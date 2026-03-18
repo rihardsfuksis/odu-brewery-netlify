@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { beers } from "@/data/beers";
 import { galleryImages } from "@/data/gallery";
+import { socialLinks } from "@/data/social";
 import { Beers } from "@/components/Beers";
 import { ContactForm } from "@/components/ContactForm";
 import { Gallery } from "@/components/Gallery";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-charcoal text-cream">
+    <div id="top" className="min-h-screen bg-charcoal text-cream">
       {/* Hero */}
       <section className="relative flex min-h-[55vh] flex-col items-center justify-center px-6 py-16 md:min-h-[50vh]">
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-[#2a2219] to-charcoal" />
@@ -128,13 +129,23 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-copper/30 py-12 px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-          <p
-            className="font-display text-2xl text-amber"
-            style={{ fontFamily: "var(--font-bebas-neue)" }}
-          >
-            ODU Brewery
-          </p>
-          <nav className="flex gap-8">
+          <Link
+            href="#top"
+            className="h-12 w-24 shrink-0 transition-opacity hover:opacity-80"
+            style={{
+              maskImage: "url('/odu_logo.svg')",
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+              maskPosition: "center",
+              WebkitMaskImage: "url('/odu_logo.svg')",
+              WebkitMaskSize: "contain",
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              backgroundColor: "var(--amber)",
+            }}
+            aria-label="ODU Brewery - back to top"
+          />
+          <nav className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
             <Link
               href="#beers"
               className="text-sm text-cream/80 transition-colors hover:text-amber"
@@ -147,6 +158,27 @@ export default function Home() {
             >
               Contact
             </Link>
+            <div className="flex gap-4">
+              {socialLinks.map(({ name, href, icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="opacity-60 transition-opacity hover:opacity-100"
+                >
+                  <Image
+                    src={icon}
+                    alt=""
+                    width={24}
+                    height={24}
+                    className="h-6 w-6"
+                    unoptimized
+                  />
+                </a>
+              ))}
+            </div>
           </nav>
         </div>
         <div className="mx-auto mt-8 max-w-6xl text-center text-sm text-cream/50">

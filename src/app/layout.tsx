@@ -19,8 +19,18 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://odubrewery.com"),
   title: "ODU Brewery | Craft Beer",
-  description: "Small craft beer brewery. Handcrafted beers with passion.",
+  description: "Craft beer brewers from Latvia. Handcrafted beers with passion.",
+  openGraph: {
+    title: "ODU Brewery | Craft Beer",
+    description: "Craft beer brewers from Latvia. Handcrafted beers with passion.",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
