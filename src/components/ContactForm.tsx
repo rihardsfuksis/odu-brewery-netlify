@@ -16,7 +16,7 @@ export function ContactForm() {
       for (const [key, value] of formData.entries()) {
         if (typeof value === "string") params.append(key, value);
       }
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
@@ -35,8 +35,6 @@ export function ContactForm() {
   return (
     <form
       name="contact"
-      method="POST"
-      data-netlify="true"
       onSubmit={handleSubmit}
       className="flex flex-col gap-6"
     >
