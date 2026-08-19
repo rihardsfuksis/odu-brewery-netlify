@@ -22,18 +22,9 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "eslint": "^9.39.5",
-    "eslint-config-next": "16.2.3",
+    "eslint-config-next": "16.3.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "picomatch@4.0.3": "4.0.4",
-      "brace-expansion@5.0.4": "5.0.5",
-      "postcss@<8.5.10": ">=8.5.10",
-      "next@>=16.0.0 <16.2.5": ">=16.2.5",
-      "next@>=16.0.0 <16.2.6": ">=16.2.6"
-    }
   },
   "packageManager": "pnpm@11.22.0+sha512.1ff870c4c6133dfd88fb2afc46dd13d47f09c9794b438c6fdb47ca98caf3bc16381ee0be93a091b8e3824cf01f889f46d7d9e20910fb0be1ab0fb5baa80dd621"
 }
