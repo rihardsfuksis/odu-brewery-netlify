@@ -1,7 +1,10 @@
 "use client";
 
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { useState, useEffect } from "react";
+
+const thumbnailSizes =
+  "(min-width: 75rem) 23.375rem, (min-width: 64rem) calc((100vw - 4.875rem) / 3), (min-width: 48rem) calc((100vw - 4rem) / 2), calc((100vw - 2.75rem) / 2)";
 
 interface GalleryProps {
   images: string[];
@@ -29,9 +32,24 @@ export function Gallery({ images }: GalleryProps) {
   if (images.length === 0) return null;
 
   const [first, second, third, fourth, ...more] = images;
+  const { props: firstThumbnail } = getImageProps({
+    src: first,
+    alt: "",
+    fill: true,
+    sizes: thumbnailSizes,
+  });
 
   return (
     <>
+      {/* The first photo can be the largest visible element on tall phones. */}
+      <link
+        rel="preload"
+        as="image"
+        media="(width < 48rem) and (height >= 820px)"
+        imageSrcSet={firstThumbnail.srcSet}
+        imageSizes={firstThumbnail.sizes}
+        fetchPriority="high"
+      />
       <div className="grid grid-cols-2 gap-2 md:gap-3 lg:grid-cols-3">
         {first && (
           <button
@@ -44,7 +62,7 @@ export function Gallery({ images }: GalleryProps) {
               alt=""
               fill
               className="object-cover transition-transform hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              sizes={thumbnailSizes}
             />
           </button>
         )}
@@ -59,7 +77,7 @@ export function Gallery({ images }: GalleryProps) {
               alt=""
               fill
               className="object-cover transition-transform hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              sizes={thumbnailSizes}
             />
           </button>
         )}
@@ -74,7 +92,7 @@ export function Gallery({ images }: GalleryProps) {
               alt=""
               fill
               className="object-cover transition-transform hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              sizes={thumbnailSizes}
             />
           </button>
         )}
@@ -89,7 +107,8 @@ export function Gallery({ images }: GalleryProps) {
               alt=""
               fill
               className="object-cover transition-transform hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              sizes={thumbnailSizes}
+              quality={60}
             />
           </button>
         )}
@@ -105,7 +124,8 @@ export function Gallery({ images }: GalleryProps) {
               alt=""
               fill
               className="object-cover transition-transform hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              sizes={thumbnailSizes}
+              quality={60}
             />
           </button>
         ))}

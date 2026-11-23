@@ -23,6 +23,8 @@ export function Beers({ beers, limit = 3 }: BeersProps) {
                 alt={beer.name}
                 width={400}
                 height={400}
+                sizes="(min-width: 75rem) 22.55rem, (min-width: 64rem) calc((100vw - 7.375rem) / 3), (min-width: 40rem) calc((100vw - 5.25rem) / 2), calc(100vw - 3.125rem)"
+                quality={60}
                 className="h-full w-full object-cover"
               />
             ) : (

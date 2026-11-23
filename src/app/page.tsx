@@ -80,6 +80,7 @@ export default function Home() {
                 alt="ODU Brewery story"
                 width={800}
                 height={600}
+                sizes="(min-width: 75rem) 34rem, (min-width: 64rem) calc((100vw - 7rem) / 2), calc(100vw - 3rem)"
                 className="h-full w-full object-cover"
               />
             </div>
